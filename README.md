@@ -1,0 +1,88 @@
+# Đề bài / Yêu cầu
+
+## 1. Mục tiêu
+
+* **So sánh hiệu quả** của Markdown và HTML dựa trên khái niệm **Token** của AI.
+* **Đánh giá tính "Human-readable"** (người đọc được) của ngôn ngữ đánh dấu.
+
+---
+
+## 2. Bối cảnh & Yêu cầu bài toán
+
+> Bạn đang thiết kế hệ thống **"Chuyên gia nông nghiệp AI"** để trả lời thắc mắc của người nông dân. Bạn phải lựa chọn giữa việc gửi dữ liệu định dạng **HTML** rườm rà hay **Markdown** ngắn gọn để tiết kiệm chi phí Token và tăng tốc độ xử lý.
+
+---
+
+## 3. Quy tắc nghiệp vụ
+
+Dựa trên các tiêu chí:
+1. **Số lượng ký tự** cho cùng một định dạng (ví dụ: in đậm).
+2. **Độ dễ đọc** đối với người dùng (người nông dân).
+3. **Hiệu quả xử lý** của mô hình AI.
+
+---
+
+## 4. Yêu cầu đầu ra
+
+### Phần 1. Phân tích bài toán
+* Giải thích tại sao **Markdown** lại giúp AI xử lý nhanh hơn dựa trên cơ chế chia nhỏ Token.
+
+### Phần 2. So sánh & Đánh giá
+* Lập bảng so sánh **Markdown** và **HTML**.
+* Đưa ra giải pháp tối ưu cho hệ thống **"GreenTech"** và lập luận lý do.
+
+---
+
+# BÀI LÀM
+
+## Phần 1. Phân tích bài toán: Cơ chế Token và hiệu suất xử lý của Markdown
+
+Trong các mô hình ngôn ngữ lớn (LLM), văn bản không được xử lý nguyên vẹn mà được chia thành các đoạn nhỏ gọi là **Token** (có thể là một từ, một phần của từ, hoặc một ký tự đặc biệt phụ thuộc vào bộ Tokenizer). 
+
+Markdown giúp AI xử lý nhanh hơn và tiết kiệm hơn HTML nhờ các yếu tố sau:
+
+* **Tối thiểu hóa ký tự cú pháp (Boilerplate overhead):**
+  * HTML sử dụng các thẻ mở và đóng dài dòng (ví dụ: `<strong>nội dung</strong>` hoặc `<span style="font-weight: bold;">`).
+  * Markdown sử dụng ký tự tối giản (`**nội dung**`).
+  * *Kết quả:* Giảm đáng kể tổng số lượng token cho cùng một nội dung thông tin.
+
+* **Tối ưu hóa cơ chế Tokenizer:**
+  * Các bộ Tokenizer của AI thường được huấn luyện trên lượng lớn mã nguồn mở và tài liệu văn bản sử dụng Markdown.
+  * Các ký tự như `#`, `*`, `-` thường tốn rất ít token (thường là $1$ token cho một cụm ký tự đánh dấu).
+  * Các cặp thẻ HTML dài dòng bị tách nhỏ thành nhiều token hơn (ví dụ: `<`, `strong`, `>`, ...).
+
+* **Tiết kiệm cửa sổ ngữ cảnh (Context Window):**
+  * Lượng token giảm giúp hệ thống truyền tải nhiều thông tin nghiệp vụ nông nghiệp hơn trong một lần gọi API.
+  * Giảm thời gian phản hồi (latency) và tối ưu hóa chi phí vận hành hạ tầng AI.
+
+---
+
+## Phần 2. So sánh & Đánh giá giải pháp cho hệ thống "GreenTech"
+
+### Bảng so sánh Markdown và HTML
+
+| Tiêu chí | Markdown | HTML |
+| :--- | :--- | :--- |
+| **Cú pháp & Độ dài** | Ngắn gọn, ký tự đại diện tối giản (`#`, `*`, `_`, `-`). | Rườm rà, nhiều thẻ đóng/mở và thuộc tính (`<p>`, `<strong>`, `<ul>`, `class`). |
+| **Số lượng Token** | Thấp, tiết kiệm từ **30% đến 50%** token so với HTML. | Cao, tốn nhiều token cho các thẻ định dạng lặp đi lặp lại. |
+| **Tính dễ đọc (Human-readable)** | Rất cao. Người nông dân vẫn có thể đọc hiểu rõ ràng ngay cả khi xem dạng văn bản thuần túy (raw text). | Thấp. Bị nhiễu bởi các đoạn mã kỹ thuật, khó đọc trực tiếp bằng mắt thường. |
+| **Chi phí API & Tốc độ** | Tiết kiệm chi phí tối đa, tốc độ phản hồi nhanh. | Chi phí cao hơn do tốn token, tốc độ xử lý chậm hơn. |
+
+---
+
+### Giải pháp tối ưu cho hệ thống "GreenTech"
+
+> **Lựa chọn:** Sử dụng **Markdown** làm định dạng chuẩn cho luồng dữ liệu đầu ra từ AI của hệ thống GreenTech.
+
+#### Lập luận lý do:
+
+1. **Phù hợp với đối tượng người dùng (Nông dân):**
+   * Người nông dân thường tiếp cận thông tin qua điện thoại thông minh hoặc các thiết bị di động tại đồng ruộng, nơi kết nối mạng có thể không ổn định.
+   * Markdown giữ cho văn bản sạch sẽ, dễ đọc, không bị làm phiền bởi các đoạn mã HTML thô nếu hiển thị lỗi.
+
+2. **Tối ưu hóa kinh tế & kỹ thuật:**
+   * Hệ thống "GreenTech" cần phục vụ lượng lớn truy vấn thời gian thực về thời tiết, sâu bệnh, giá nông sản.
+   * Dùng Markdown giúp giảm tải băng thông truyền dữ liệu và tiết kiệm đáng kể chi phí gọi API Token cho doanh nghiệp.
+
+3. **Tính linh hoạt cao:**
+   * Giao diện ứng dụng của GreenTech có thể dễ dàng render Markdown sang giao diện trực quan (UI components) cho người dùng mà vẫn đảm bảo tính toàn vẹn và tốc độ xử lý nhanh từ phía mô hình AI.
